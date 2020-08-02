@@ -1,0 +1,52 @@
+<div class="container">
+	<div class="columns is-multiline">
+		<div class="column is-6">
+			<div class="card">
+				<header class="card-header">
+					<p class="card-header-title">Add Text Murli</p>
+				</header>
+				<div class="card-content">
+					<div class="content">
+            <div class="field">
+							<div class="control">
+								<input type="text" class="input" placeholder="Title" [(ngModel)]="title"/>
+							</div>
+						</div>
+            <div class="field">
+              <textarea class="textarea" placeholder="Text Murli" [(ngModel)]="body" row="40"></textarea>
+            </div>
+						<div class="field">
+							<div class="control">
+								<input type="date" class="input" [(ngModel)]="date">
+							</div>
+						</div>
+					
+					</div>
+				</div>
+				<footer class="card-footer">
+					<a (click)="addText()" class="card-footer-item">Add</a>
+				</footer>
+			</div>
+		</div>
+
+		<div class="column is-6" *ngFor="let class of allText">
+      <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            <b class="is-uppercase">{{class.title}}</b>
+          </p>
+        </header>
+        <div class="card-content">
+          <div>{{class.body}}</div>
+          <br>{{class.date.toDate() | date:'mediumDate'}}
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-item" (click)="this.crud.detele('text',class.id)">
+            Delete
+          </div>
+        </footer>
+      </div>
+		</div>
+
+	</div>
+</div>
